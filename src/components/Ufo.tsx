@@ -10,7 +10,7 @@ export default function UFO() {
     return (
         <>
             <svg
-                style={{ width: '100%', height: '100%' }}
+                style={{ maxHeight: '100vh', overflow: 'hidden' }}
                 id="UFO-image"
                 viewBox="0 0 2303 1630"
                 fill="none"
@@ -326,7 +326,7 @@ const LittleStar = styled.circle`
     transform-origin: center;
 `;
 
-const slideHorizontal = keyframes`from {transform: translateX(120px) translateY(-50px) rotate(2deg)} to {transform: translateX(-100px) translateY(0) rotate(5deg)}`;
+const slideHorizontal = keyframes`from {transform: translateX(120px) translateY(-50px) rotate(10deg)} to {transform: translateX(-100px) translateY(0) rotate(15deg)}`;
 
 const Cloud = styled.path`
     animation: ${slideHorizontal} 10s infinite alternate;
@@ -343,7 +343,7 @@ const UFOBeam = styled.path`
 `;
 
 const appearBottomUp = keyframes`from {transform: translateY(1000px)} to {transform: translateY(0)}`;
-const soakUp = keyframes`from {transform: translateX(0) translateY(0) scale(1)} to {transform: translateX(9px) translateY(-260px) scale(0)}`;
+const soakUp = keyframes`0% {transform: translateX(0) translateY(0) scale(1)} 80% {transform: translateX(9px) translateY(-260px) scale(0)} 100% {transform: translateX(9px) translateY(-260px) scale(0)}`;
 
 const Zero = styled.path`
     animation: ${appearBottomUp} 3s;
@@ -352,6 +352,7 @@ const Zero = styled.path`
 
     &.soak {
         animation: ${soakUp} 2s;
+        animation-timing-function: cubic-bezier(0.5, 0.5, 0.7, 1);
     }
 `;
 
